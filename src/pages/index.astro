@@ -1,17 +1,220 @@
 ---
+import '../styles/globals.css';
+import backInSaddle from "../assets/Back-In-The-Saddle-by-Michael-Grills.webp";
+import painting from "../assets/Sisters1-painting-by-Michael-Grills.webp";
 
+const title = "Michael Grills | Creative Designer and Painter";
+const description = "The official portal for Michael Grills. Explore professional creative services for businesses or view original fine art and paintings."
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div class="top"><h1>Michael Grills</h1><h2>Choose Wisely!</h2><h2>©<span id="copyright"></span></h2></div>
+		<div class="choices">
+			<a class="business" id="business" href="https://create.michaelgrills.ca/" aria-label="Michael Grills Creative Design Services">
+			<div class="destinationWrapper">	
+					<h2>| Creative Services</h2>
+					<p>For Agencies, Businesses, and Founders</p>
+			</div>
+			</a>
+			<a class="painting" id="painting" href="https://art.michaelgrills.ca/" aria-label="Michael Grills Fine Art Gallery">
+				<div class="destinationWrapper" >
+					<h2>| Painting</h2>
+					<p>For the <u>Heck</u> of it</p>
+				</div>
+			</a>
+		</div>
 	</body>
 </html>
+<style define:vars={{backInSaddle:`url(${backInSaddle.src})`, painting:`url(${painting.src})`}}>
+	@media (min-width:0px) {
+		body {
+			position: relative;
+			min-width: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.top {
+			position: absolute;
+			display: 	flex;
+			flex-direction: row;
+			justify-content: space-between;
+			left: 0px;
+			width: 100%;
+			background-color: #f0740c ;
+			color: rgb(240, 231, 231);
+			top: 0px;
+			height: 32px;
+			z-index: 1000;
+			padding: 4px;
+			text-align: center;
+			filter: drop-shadow(0px 2px 4px black);
+		}
+		.top h2, .top h1 {
+			flex:1;
+			display: flex;
+			justify-content: center;
+			font-size: 14px;
+			font-weight: 400;
+			padding-left:12px;
+			padding-right: 12px;
+			padding-top:4px;
+		}
+		.top h2:first-child , .top h1:first-child { justify-content: flex-start; }
+		.top h2:last-child, .top h1:last-child  { justify-content: flex-end; }
+		.choices {
+			min-width: 0;			
+			width: 100%;
+			height: 100dvh;
+			display:flex;
+			flex-direction: column;
+		}
+		a {
+			position: relative;
+			color: #cce1ee;
+			text-decoration: none;
+			display: block;
+		}
+		a::before, .business::before, .painting::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		.destinationWrapper {
+			padding: 16px;
+			width: 60%;
+			position: relative;
+			top:50px;
+			border: 1px #f0740c solid;
+		}
+		.business .destinationWrapper {
+			background-color: #52a294;
+		}
+		.painting .destinationWrapper  {
+			background-color: #528ce4;
+		}
+		a h2 {
+			margin-bottom: 16px;
+			font-size: 20px;
+		}
+		a p{
+			font-weight: 300;
+			font-size: 16px;
+		}
+		.business, .painting {
+			display: flex;
+			position: relative;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			flex:1;
+			max-width: 100%;
+			overflow: hidden;
+		}
+		.business::before {
+			background-color: #a8c0cf;
+			background-image: var(--backInSaddle);
+			background-position: top;
+			border-bottom: 2px solid #f0740c ;
+		}
+		.painting::before {
+			background-color: rgb(210, 185, 151);
+			background-image: var(--painting);
+			background-position: center;
+		}
+	}
+	@media (min-width:768px) {
+		body {
+		}
+		.top {
+			padding: 8px;
+			height: 44px;
+		}
+		.top h2, .top h1 {
+			flex:1;
+			display: flex;
+			justify-content: center;
+			font-size: 20px;
+			font-weight: 400;
+			padding-left:12px;
+			padding-right: 12px;
+			padding-top:4px;
+		}
+		.choices {
+					flex-direction: row;
+			justify-content: space-evenly;
+		}
+		a {
+			transition: color 0.25s ease-in-out;
+		}
+		a::before, .business::before, .painting::before {
+			filter:grayscale(.75) blur(4px);
+			transition: filter 0.25s ease-in-out;
+		}
+				a:hover {
+			color: white;
+		}
+		a:hover::before {
+			filter:none;
+		} 
+		.business {
+			background-position: center;
+			border-right: 2px solid #f0740c;
+			border-bottom: none ;
+		}
+		.painting {
+			border-left: 2px solid #f0740c ;
+		}
+		a {
+			position: relative;
+		}
+		.destinationWrapper {
+			top: 100px;
+			width: 50%;
+		}
+		a h2 {
+			margin-bottom: 16px;
+			font-size: default;
+		}
+		a p {
+			font-size: 20px;
+		}
+	}
+</style>
+
+<script>
+	const year:HTMLSpanElement = document.getElementById("copyright")as HTMLSpanElement
+
+	year.innerHTML =new Date().getFullYear().toString();
+
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michael Grills",
+  "url": "https://michaelgrills.ca",
+  "jobTitle": "Creative Designer and Painter",
+  "sameAs": [
+    "https://create.michaelgrills.ca/",
+    "https://art.michaelgrills.ca/"
+  ]
+}
+</script>

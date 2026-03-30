@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.1"
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.1.1",
+    "firebase": "^12.11.0",
+    "firebase-admin": "^13.7.0"
   }
 }
